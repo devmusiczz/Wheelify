@@ -1,6 +1,6 @@
 import Image from 'next/image'
-import Filter from '../components/Filter'
-import ProductList from '../components/ProductList';
+import Filter from '@/components/Filter'
+import ProductList from '@/components/ProductList';
 
 
 const ListPage = () => {
