@@ -9,13 +9,14 @@ const PRODUCT_PER_PAGE = 20;
 const ProductList = async ({
     categoryId,
     limit,
+    searchParams,
 }:{
     categoryId:string;
     limit?:number;
+    searchParams?: any;
 }) => {
 
     const wixClient = await wixClientServer();
-  
     const res = await wixClient.products
     .queryProducts()
     .eq("collectionIds", categoryId)
@@ -50,7 +51,7 @@ const ProductList = async ({
         </div>
         <div className='flex justify-between' >
             <span className='font-medium'>{product.name}</span>
-            <span className='font-semibold'>Rs {product.price?.price}</span>
+            <span className='font-semibold'>Rs {product.priceData?.price}</span>
         </div>
         {product.additionalInfoSections && (
         <div
