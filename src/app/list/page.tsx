@@ -22,7 +22,7 @@ const ListPage = async ({searchParams}:{searchParams:any}) => {
           <button className='rounded-3xl bg-laalhai text-white w-max py-3 px-5 text-sm' >Buy Now</button>
         </div>
         <div className='relative w-1/3'>
-          <Image src="/woman.png" alt='' fill className='object-contain' />
+          <Image src="/woman.png" alt='' sizes='25vw' fill className='object-contain' />
         </div>
       </div>
       {/* FILTER */}
