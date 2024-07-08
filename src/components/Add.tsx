@@ -14,13 +14,13 @@ const Add = ({
     const [quantity, setQuantity] = useState(1);
 
     // TEMPORARY
-    const stock = 4;
+    // const stock = 4;
 
     const handleQuantity = (type: 'i' | 'd' ) => {
         if(type === 'd' && quantity > 1){
             setQuantity((prev)=> prev - 1);
         }
-        if(type === 'i' && quantity < stock ){
+        if(type === 'i' && quantity < stockNumber ){
             setQuantity((prev)=> prev + 1);
         }
 
