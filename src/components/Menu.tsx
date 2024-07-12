@@ -1,7 +1,7 @@
 "use client"
+
 import Image from "next/image"
 import { useState } from "react"
-import HomePage from '../page';
 import Link from 'next/link'
 
 
