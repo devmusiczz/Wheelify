@@ -690,22 +690,22 @@
   resolved "https://registry.npmjs.org/@wix/motion-edm-autogen-types/-/motion-edm-autogen-types-1.0.34.tgz"
   integrity sha512-7zk9cTGZqJ7E5JsfXyTPD3iftU5vzayUk4aUkt/ge6/SXurMiXQmYkLQwfcj4o7iMC7v066FTlxTqBy1DNmsBg==
 
-"@wix/redirects_redirects@1.0.18":
-  version "1.0.18"
-  resolved "https://registry.npmjs.org/@wix/redirects_redirects/-/redirects_redirects-1.0.18.tgz"
-  integrity sha512-PO8miGXr2FLajVzuECW3AIDMdNXk6tGdP04sm95KhaIc/NXEaOUC9FJ1KZcWUTOinXskybL1fZQu9WwZziB5sw==
+"@wix/redirects_redirects@1.0.20":
+  version "1.0.20"
+  resolved "https://registry.npmjs.org/@wix/redirects_redirects/-/redirects_redirects-1.0.20.tgz"
+  integrity sha512-TkL1ZXTUpspWhTH0960hKoxg38xZESUwadnjHb+60lliStrzVMWp78P/Kmsp8Guhp+M9f3P3RtP9tfuGmSSMYw==
   dependencies:
     "@wix/metro-runtime" "^1.1696.0"
     "@wix/motion-edm-autogen-query-wrapper" "^1.0.37"
-    "@wix/sdk-runtime" "^0.2.12"
-    "@wix/sdk-types" "^1.7.1"
+    "@wix/sdk-runtime" "^0.3.11"
+    "@wix/sdk-types" "^1.9.2"
 
-"@wix/redirects@^1.0.41":
-  version "1.0.48"
-  resolved "https://registry.npmjs.org/@wix/redirects/-/redirects-1.0.48.tgz"
-  integrity sha512-UE1lTEatYvm9mHlptXXfvLFsZpRjE3HesQN566mtUW6esHkofGDt+5LNDYo2ofxmYrm2NqWwSjGebFeB1oR1rA==
+"@wix/redirects@^1.0.41", "@wix/redirects@^1.0.50":
+  version "1.0.50"
+  resolved "https://registry.npmjs.org/@wix/redirects/-/redirects-1.0.50.tgz"
+  integrity sha512-DZhg7ksbkLrH9fl4gtwMiPMMZWz4PXuowWgP2H3e1LXe60k9J+kjfO1K7DDrWrZqvmyijGyiyWakY7gmLJn9Bg==
   dependencies:
-    "@wix/redirects_redirects" "1.0.18"
+    "@wix/redirects_redirects" "1.0.20"
 
 "@wix/sdk-context@^0.0.1":
   version "0.0.1"
@@ -719,6 +719,14 @@
   dependencies:
     "@wix/sdk-types" "^1.7.0"
 
+"@wix/sdk-runtime@^0.3.11":
+  version "0.3.11"
+  resolved "https://registry.npmjs.org/@wix/sdk-runtime/-/sdk-runtime-0.3.11.tgz"
+  integrity sha512-O9nlyNjqz7JIyagP6AIYAr10zgRgjzRjSvjlKn7Qh9mDdjHtcmYpR240dezpGal017r6yfh+5TweWUxhXQpYOQ==
+  dependencies:
+    "@wix/sdk-context" "^0.0.1"
+    "@wix/sdk-types" "^1.9.2"
+
 "@wix/sdk-runtime@^0.3.3":
   version "0.3.9"
   resolved "https://registry.npmjs.org/@wix/sdk-runtime/-/sdk-runtime-0.3.9.tgz"
@@ -727,10 +735,10 @@
     "@wix/sdk-context" "^0.0.1"
     "@wix/sdk-types" "^1.9.1"
 
-"@wix/sdk-types@^1.5.11", "@wix/sdk-types@^1.7.0", "@wix/sdk-types@^1.7.1", "@wix/sdk-types@^1.8.0", "@wix/sdk-types@^1.9.1":
-  version "1.9.1"
-  resolved "https://registry.npmjs.org/@wix/sdk-types/-/sdk-types-1.9.1.tgz"
-  integrity sha512-7ELMATnaAkEZKbg6zOmwDNPBZJo3TXY348HEluKVcWye8Pl8W1aSJ+HAHi3P5A0dzLV6B0YSw/E9qhg2I2/j1A==
+"@wix/sdk-types@^1.5.11", "@wix/sdk-types@^1.7.0", "@wix/sdk-types@^1.7.1", "@wix/sdk-types@^1.8.0", "@wix/sdk-types@^1.9.1", "@wix/sdk-types@^1.9.2":
+  version "1.9.2"
+  resolved "https://registry.npmjs.org/@wix/sdk-types/-/sdk-types-1.9.2.tgz"
+  integrity sha512-sBBO60b5H5xRnGzFQN5mwja20vcfwTzOOUJEEmkLpGldQw92InvIZKPjT8HyVaDXSp1IVbWtIpBqoIoR+N4lcQ==
 
 "@wix/sdk@^1.10.2":
   version "1.10.2"
@@ -2862,6 +2870,13 @@ queue-microtask@^1.2.2:
   resolved "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
 
+react-confetti@^6.1.0:
+  version "6.1.0"
+  resolved "https://registry.npmjs.org/react-confetti/-/react-confetti-6.1.0.tgz"
+  integrity sha512-7Ypx4vz0+g8ECVxr88W9zhcQpbeujJAVqL14ZnXJ3I23mOI9/oBVTQ3dkJhUmB0D6XOtCZEM6N0Gm9PMngkORw==
+  dependencies:
+    tween-functions "^1.2.0"
+
 react-dom@^18, react-dom@^18.2.0:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-18.2.0.tgz"
@@ -2875,7 +2890,7 @@ react-is@^16.13.1:
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
-"react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18, react@^18.2.0, "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16.8:
+"react@^16.3.0 || ^17.0.1 || ^18.0.0", "react@^16.8.0 || ^17.0.0 || ^18.0.0", react@^18, react@^18.2.0, "react@>= 16.8.0 || 17.x.x || ^18.0.0-0", react@>=16.8:
   version "18.2.0"
   resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
   integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
@@ -3341,6 +3356,11 @@ tslib@^2.0.0, tslib@^2.0.3, tslib@^2.4.0, tslib@^2.6.2, tslib@^2.6.3:
   version "2.6.3"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.3.tgz"
   integrity sha512-xNvxJEOUiWPGhUuUdQgAJPKOOJfGnIyKySOc09XkKsgdUV/3E2zvwZYdejjmRgPCgcym1juLH3226yA7sEFJKQ==
+
+tween-functions@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/tween-functions/-/tween-functions-1.2.0.tgz"
+  integrity sha512-PZBtLYcCLtEcjL14Fzb1gSxPBeL7nWvGhO5ZFPGqziCcr8uvHp0NDmdjBchp6KHL+tExcg0m3NISmKxhU394dA==
 
 type-check@^0.4.0, type-check@~0.4.0:
   version "0.4.0"
