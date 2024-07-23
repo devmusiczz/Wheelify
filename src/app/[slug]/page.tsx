@@ -31,15 +31,15 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
         <h1 className="text-4xl font-medium">{product.name}</h1>
         <p className="text-gray-500">{product.description}</p>
         <div className="h-[2px] bg-gray-100" />
-        {product.price?.price === product.price?.discountedPrice ? (
-          <h2 className="font-medium text-2xl">${product.price?.price}</h2>
+        {product.priceData?.price === product.priceData?.discountedPrice ? (
+          <h2 className="font-medium text-2xl">Rs {product.priceData?.price}</h2>
         ) : (
           <div className="flex items-center gap-4">
             <h3 className="text-xl text-gray-500 line-through">
-              ${product.price?.price}
+              Rs {product.priceData?.price}
             </h3>
             <h2 className="font-medium text-2xl">
-              ${product.price?.discountedPrice}
+              Rs {product.priceData?.discountedPrice}
             </h2>
           </div>
         )}
