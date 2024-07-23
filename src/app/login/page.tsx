@@ -99,7 +99,7 @@ const LoginPage = () => {
           Cookies.set("refreshToken", JSON.stringify(tokens.refreshToken), {
             expires: 2,
           });
-          wixClient.auth.setTokens(tokens); 
+          wixClient.auth.setTokens(tokens);
           router.push("/");
           break;
         case LoginState.FAILURE:
@@ -190,7 +190,7 @@ const LoginPage = () => {
           </div>
         )}
         <button
-          className="bg-laalhai text-white p-2 rounded-md disabled:bg-pink-200 disabled:cursor-not-allowed"
+          className="bg-lama text-white p-2 rounded-md disabled:bg-pink-200 disabled:cursor-not-allowed"
           disabled={isLoading}
         >
           {isLoading ? "Loading..." : buttonTitle}
