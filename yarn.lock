@@ -601,6 +601,45 @@
     "@babel/runtime" "^7.24.7"
     tslib "^2.6.3"
 
+"@wix/members_authentication@1.0.18":
+  version "1.0.18"
+  resolved "https://registry.npmjs.org/@wix/members_authentication/-/members_authentication-1.0.18.tgz"
+  integrity sha512-ZnHdmuAySno38bbD9EyUywVjkHOM8U7ynQpWSzKYHwjkVBDnbVF1hkG4vhcldtRYVbOfNVpPrzhFvQrDMSvKKA==
+  dependencies:
+    "@wix/metro-runtime" "^1.1696.0"
+    "@wix/motion-edm-autogen-query-wrapper" "^1.0.37"
+    "@wix/sdk-runtime" "^0.2.12"
+    "@wix/sdk-types" "^1.7.1"
+
+"@wix/members_badges@1.0.26":
+  version "1.0.26"
+  resolved "https://registry.npmjs.org/@wix/members_badges/-/members_badges-1.0.26.tgz"
+  integrity sha512-xh5SeRlQ1XBPTgScjThaWm/c6IJFEPVuYDMTkL2nCr8yR6sdBL/gJcebYauTA44mK+h0GYYi/e0PwTTnXTLs7g==
+  dependencies:
+    "@wix/metro-runtime" "^1.1696.0"
+    "@wix/motion-edm-autogen-query-wrapper" "^1.0.37"
+    "@wix/sdk-runtime" "^0.2.12"
+    "@wix/sdk-types" "^1.7.1"
+
+"@wix/members_members@1.0.32":
+  version "1.0.32"
+  resolved "https://registry.npmjs.org/@wix/members_members/-/members_members-1.0.32.tgz"
+  integrity sha512-FhgGfX0rSobVjq6WFVOVkoLxrSCTjeT2izqiUobd687FVrbL4jDl5nznQ4Od8z3vBpZI7v48mrtgXiEjAN92nw==
+  dependencies:
+    "@wix/metro-runtime" "^1.1696.0"
+    "@wix/motion-edm-autogen-query-wrapper" "^1.0.37"
+    "@wix/sdk-runtime" "^0.2.12"
+    "@wix/sdk-types" "^1.7.1"
+
+"@wix/members@^1.0.90":
+  version "1.0.90"
+  resolved "https://registry.npmjs.org/@wix/members/-/members-1.0.90.tgz"
+  integrity sha512-XQjm359rmttKNn1bnf5NbP6hUp6L28i4w7W1+DFPNLXw24DfoRoKytDfSSozZHc915I6YKPH/0bDffRUb8qEvw==
+  dependencies:
+    "@wix/members_authentication" "1.0.18"
+    "@wix/members_badges" "1.0.26"
+    "@wix/members_members" "1.0.32"
+
 "@wix/metro-public-utils@1.0.31":
   version "1.0.31"
   resolved "https://registry.npmjs.org/@wix/metro-public-utils/-/metro-public-utils-1.0.31.tgz"
@@ -3312,6 +3351,11 @@ thenify-all@^1.0.0:
   integrity sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==
   dependencies:
     any-promise "^1.0.0"
+
+timeago.js@^4.0.2:
+  version "4.0.2"
+  resolved "https://registry.npmjs.org/timeago.js/-/timeago.js-4.0.2.tgz"
+  integrity sha512-a7wPxPdVlQL7lqvitHGGRsofhdwtkoSXPGATFuSOA2i1ZNQEPLrGnj68vOp2sOJTCFAQVXPeNMX/GctBaO9L2w==
 
 to-regex-range@^5.0.1:
   version "5.0.1"

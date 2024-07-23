@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@wix/ecom": "^1.0.659",
+    "@wix/members": "^1.0.90",
     "@wix/redirects": "^1.0.50",
     "@wix/sdk": "^1.10.2",
     "@wix/stores": "^1.0.159",
@@ -19,6 +20,7 @@
     "react": "^18",
     "react-confetti": "^6.1.0",
     "react-dom": "^18",
+    "timeago.js": "^4.0.2",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
