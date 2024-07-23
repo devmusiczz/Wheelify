@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -17,19 +17,19 @@ const NavIcons = () => {
   const router = useRouter();
   const pathName = usePathname();
 
-  // Temporary
-  // const isLoggedIn = false;
-
   const wixClient = useWixClient();
   const isLoggedIn = wixClient.auth.loggedIn();
 
+  // TEMPORARY
+  // const isLoggedIn = false;
+
   const handleProfile = () => {
     if (!isLoggedIn) {
-      router.push('/login');
+      router.push("/login");
     } else {
-    setIsProfileOpen((prev) => !prev);
-  }
-};
+      setIsProfileOpen((prev) => !prev);
+    }
+  };
 
   // AUTH WITH WIX-MANAGED AUTH
 
@@ -56,12 +56,12 @@ const NavIcons = () => {
     router.push(logoutUrl);
   };
 
-  const {cart, counter, getCart} = useCartStore();
 
-  useEffect(()=> {
+  const { cart, counter, getCart } = useCartStore();
 
+  useEffect(() => {
     getCart(wixClient);
-  }, [wixClient,getCart]);
+  }, [wixClient, getCart]);
 
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative">
@@ -93,15 +93,8 @@ const NavIcons = () => {
         className="relative cursor-pointer"
         onClick={() => setIsCartOpen((prev) => !prev)}
       >
-        <Image
-          src="/cart.png"
-          alt=""
-          width={22}
-          height={22}
-          className="cursor-pointer"
-          
-        />
-        <div className="absolute -top-4 -right-4 w-6 h-6 bg-laalhai rounded-full text-white text-sm flex items-center justify-center">
+        <Image src="/cart.png" alt="" width={22} height={22} />
+        <div className="absolute -top-4 -right-4 w-6 h-6 bg-lama rounded-full text-white text-sm flex items-center justify-center">
           {counter}
         </div>
       </div>
