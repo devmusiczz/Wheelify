@@ -81,7 +81,7 @@ const ProfilePage = async () => {
             >
               <span className="w-1/4">{order._id?.substring(0, 10)}...</span>
               <span className="w-1/4">
-                ${order.priceSummary?.subtotal?.amount}
+                Rs {order.priceSummary?.subtotal?.amount}
               </span>
               {order._createdDate && (
                 <span className="w-1/4">{format(order._createdDate)}</span>
