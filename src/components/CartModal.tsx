@@ -78,7 +78,7 @@ const CartModal = () => {
                             {item.quantity} x{" "}
                           </div>
                         )}
-                        ${item.price?.amount}
+                        Rs {item.price?.amount}
                       </div>
                     </div>
                     {/* DESC */}

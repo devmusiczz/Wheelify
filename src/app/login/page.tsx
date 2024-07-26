@@ -122,6 +122,7 @@ const LoginPage = () => {
         default:
           break;
       }
+      console.log(response);
     } catch (err) {
       console.log(err);
       setError("Something went wrong!");

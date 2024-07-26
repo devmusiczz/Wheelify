@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@stripe/stripe-js": "^4.1.0",
     "@wix/ecom": "^1.0.659",
     "@wix/members": "^1.0.90",
     "@wix/redirects": "^1.0.50",
@@ -21,7 +20,6 @@
     "react": "^18",
     "react-confetti": "^6.1.0",
     "react-dom": "^18",
-    "stripe": "^16.4.0",
     "timeago.js": "^4.0.2",
     "zustand": "^4.5.4"
   },
