@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# AutoSwags
 
-## Getting Started
+AutoSwags is a robust e-commerce application built with React, Next.js, Tailwind CSS, and Wix Headless CMS. The project leverages server actions and a headless CMS to provide a seamless shopping experience with a variety of features and functionalities.
 
-First, run the development server:
+## Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **React**
+- **Next.js**
+- **Tailwind CSS**
+- **Wix Headless CMS**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features and Functionalities
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 1. Homepage
+- **Slider:** A dynamic slider that changes every 5 seconds, with manual controls.
+- **Featured Products:** Display products with a hover effect to change images too.
+- **Category List:** Horizontal scrolling category list for easy navigation.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 2. Product List Page
+- **Fetching Products:** Retrieve product data from a headless database.
+- **Pagination:** Navigation through multiple pages of products.
+- **Filtering and Sorting:** Filter products by various criteria and sort by price or update date.
+- **URL Query Updates:** Update search queries in the URL for easy sharing and saving.
 
-## Learn More
+### 3. Product Search
+- **Search Functionality:** Ability to search for products by name.
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Single Product Page
+- **Product Images:** Display multiple images for a product with selection capability.
+- **Product Information:** Detailed information about the product.
+- **Options Component:** Selectable product options (e.g., color, size) with stock validation.
+- **Stock Alerts:** Show stock levels and disable out-of-stock options.
+- **Quantity Selector:** Control purchase quantity with a limit based on stock.
+- **User Reviews:** Display user reviews and allow users to leave reviews after purchase.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 5. Cart Functionality
+- **Add to Cart:** Add products to the cart and update the cart icon.
+- **Cart Management:** View, edit, and remove items in the cart.
+- **Persistent Cart:** Store cart items for non-logged-in users using a visitor token.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 6. Checkout Process
+- **Guest Checkout:** Allow users to purchase without logging in by providing the necessary details.
+- **Payment Options:** Support multiple payment methods and providers.
+- **Order Summary:** Redirect to a success page with order details after payment.
+- **Order Confirmation Email:** Send order details via email.
 
-## Deploy on Vercel
+### 7. User Authentication
+- **User Registration:** Create a new account with email verification.
+- **Login and Logout:** Authenticate using email and password, with logout functionality.
+- **Password Reset:** Send password reset emails and allow password updates.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 8. User Profile
+- **Profile Management:** Update user information and view order history.
+- **Saved Details:** Auto-fill checkout information for logged-in users.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 9. Backend Integration
+- **Wix Headless CMS:** Use Wix's headless CMS for backend management.
+- **Product Management:** Create, manage, and track products, discounts, and inventory.
+- **Order Tracking:** Track orders, manage abandoned carts, and send reminder emails.
+- **Sales Reporting:** View sales reports, payments, and invoices.
