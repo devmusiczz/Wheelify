@@ -1,12 +1,11 @@
 "use client";
+import { Suspense, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
 import Confetti from "react-confetti";
 
-const SuccessPage = () => {
+const SuccessPageContent = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-
   const orderId = searchParams.get("orderId");
 
   useEffect(() => {
@@ -30,6 +29,14 @@ const SuccessPage = () => {
       </h2>
       <h3 className="">You are being redirected to the order page...</h3>
     </div>
+  );
+};
+
+const SuccessPage = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <SuccessPageContent />
+    </Suspense>
   );
 };
 
