@@ -12,7 +12,7 @@ const CartModal = () => {
   // const cartItems = true;
 
   const wixClient = useWixClient();
-  const { cart, isLoading, removeItem } = useCartStore();
+  const { cart, isLoading, removeItem }: { cart: any, isLoading: boolean, removeItem: (client: any, itemId: string) => void } = useCartStore();
 
   const handleCheckout = async () => {
     try {
@@ -48,7 +48,7 @@ const CartModal = () => {
           {/* LIST */}
           <div className="flex flex-col gap-8">
             {/* ITEM */}
-            {cart.lineItems.map((item) => (
+            {cart.lineItems.map((item:any) => (
               <div className="flex gap-4" key={item._id}>
                 {item.image && (
                   <Image
