@@ -8,7 +8,7 @@ import { WixClientContextProvider } from "@/context/wixContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "AutoSwags",
+  title: "Wheelify",
   description: "A complete e-commerce application for Automobile Accesorries",
 };
 

@@ -1,6 +1,6 @@
-# AutoSwags
+# Wheelify
 
-AutoSwags is a robust e-commerce application built with React, Next.js, Tailwind CSS, and Wix Headless CMS. The project leverages server actions and a headless CMS to provide a seamless shopping experience with a variety of features and functionalities.
+Wheelify is a robust e-commerce application built with React, Next.js, Tailwind CSS, and Wix Headless CMS. The project leverages server actions and a headless CMS to provide a seamless shopping experience with a variety of features and functionalities.
 
 ## Tech Stack
 
