@@ -13,7 +13,7 @@ const ListPage = async ({ searchParams }: { searchParams: any }) => {
   );
 
   return (
-    <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
+    <div className="px-4 md:px-8 lg:px-16 xl:px-32 mt-24 2xl:px-64 relative">
       {/* CAMPAIGN */}
       <div className="hidden bg-pink-50 px-4 sm:flex justify-between h-64">
         <div className="w-2/3 flex flex-col items-center justify-center gap-8">

@@ -40,13 +40,13 @@ const Slider = () => {
 useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-    }, 3500);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="h-[calc(100vh-80px)] overflow-hidden">
+    <div className="h-[calc(100vh-80px)] mt-20 overflow-hidden">
     <div
       className="w-max h-full flex transition-all ease-in-out duration-1000"
       style={{ transform: `translateX(-${current * 100}vw)` }}

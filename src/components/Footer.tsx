@@ -11,9 +11,9 @@ const Footer = () => {
           <Link href="/">
             <div className="text-2xl tracking-wide">Wheelify</div>
           </Link>
-          <p>
+          {/* <p>
             Incubatin Centre, GL Bajaj , Knowledge Park 2, Greater Noida, Uttar Pradesh, India
-          </p>
+          </p> */}
           <span className="font-semibold">devr69080@gmail.com</span>
           <span className="font-semibold">+1 234 567 890</span>
           <div className="flex gap-6">
