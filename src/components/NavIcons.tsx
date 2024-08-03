@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CartModal from "./CartModal";
 import { useWixClient } from "@/hooks/useWixClient";
 import Cookies from "js-cookie";
@@ -22,6 +22,8 @@ const NavIcons = () => {
 
   // TEMPORARY
   // const isLoggedIn = false;
+
+  const cartRef = useRef<HTMLDivElement>(null);
 
   const handleProfile = () => {
     if (!isLoggedIn) {
@@ -63,6 +65,19 @@ const NavIcons = () => {
     getCart(wixClient);
   }, [wixClient, getCart]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+        setIsCartOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative">
       <Image
@@ -92,6 +107,7 @@ const NavIcons = () => {
       <div
         className="relative cursor-pointer"
         onClick={() => setIsCartOpen((prev) => !prev)}
+        ref={cartRef}
       >
         <Image src="/cart.png" alt="" width={22} height={22} />
         <div className="absolute -top-4 -right-4 w-6 h-6 bg-lama rounded-full text-white text-sm flex items-center justify-center">
