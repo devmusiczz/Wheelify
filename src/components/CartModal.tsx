@@ -6,13 +6,31 @@ import { useCartStore } from "@/hooks/useCartStore";
 import { media as wixMedia } from "@wix/sdk";
 import { useWixClient } from "@/hooks/useWixClient";
 import { currentCart } from "@wix/ecom";
+import { useRouter } from 'next/navigation';
+import React, { useEffect, useRef } from "react";
 
-const CartModal = () => {
+const CartModal = ({ closeModal }: { closeModal: () => void }) => {
   // TEMPORARY
   // const cartItems = true;
 
   const wixClient = useWixClient();
   const { cart, isLoading, removeItem }: { cart: any, isLoading: boolean, removeItem: (client: any, itemId: string) => void } = useCartStore();
+
+  const modalRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
+        closeModal();
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [modalRef, closeModal]);
 
   const handleCheckout = async () => {
     try {
@@ -38,8 +56,13 @@ const CartModal = () => {
     }
   };
 
+  const router = useRouter();
+  const handleCartButtonClick = () => {
+    router.push('/cart');
+  };
+
   return (
-    <div className="w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20">
+    <div ref={modalRef} className="w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20">
       {!cart.lineItems ? (
         <div className="">Cart is Empty</div>
       ) : (
@@ -111,7 +134,10 @@ const CartModal = () => {
               Shipping and taxes calculated at checkout.
             </p>
             <div className="flex justify-between text-sm">
-              <button className="rounded-md py-3 px-4 ring-1 ring-gray-300">
+              <button
+                className="rounded-md py-3 px-4 ring-1 ring-gray-300"
+                onClick={handleCartButtonClick}
+              >
                 View Cart
               </button>
               <button
