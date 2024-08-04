@@ -9,7 +9,7 @@ const slides = [
     title: "All Automobile Accessories ",
     description: "Find trending automobile accessories! Up to 50% off on all accessories!",
     img: "/Auto4.jpg",
-    url: "/",
+    url: "/list?cat=all-products",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50",
   },
   {
@@ -17,7 +17,7 @@ const slides = [
     title: "Car Accessories Sale",
     description: "Looking for your Car Accessories? Your search ends here!",
     img: "/Auto2.jpg",
-    url: "/",
+    url: "/list?cat=cars-accessories",
     bg: "bg-gradient-to-r from-pink-50 to-blue-50",
   },
   {
@@ -25,7 +25,7 @@ const slides = [
     title: "Bike Accessories Sale",
     description: "Fresh deals for your bike! Up to 50% off on accessories!",
     img: "/Auto3.jpg",
-    url: "/",
+    url: "/list?cat=bike",
     bg: "bg-gradient-to-r from-blue-50 to-yellow-50",
   }
 ];
@@ -33,13 +33,13 @@ const slides = [
 const Slider = () => {
   const [current, setCurrent] = useState(0);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  //   }, 5000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    }, 5000);
 
-  //   return () => clearInterval(interval);
-  // }, []);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <div className="h-[calc(100vh-80px)] mt-20 overflow-hidden relative">
@@ -68,9 +68,9 @@ const Slider = () => {
             <Image
               src={slide.img}
               alt={slide.title}
-              layout="fill"
-              objectFit="cover"
-              className="absolute inset-0 z-[-1]"
+              width={1920} // Adjust width as needed
+              height={1080} // Adjust height as needed
+              className="absolute inset-0 -z-[1] object-cover"
             />
           </div>
         ))}

@@ -77,7 +77,7 @@ const ProductList = async ({
           </div>
           <div className="flex text-white justify-between">
             <span className="font-medium">{product.name}</span>
-            <span className="font-semibold">Rs {product.priceData?.price}</span>
+            <span className="font-semibold">Rs {product.priceData?.discountedPrice}</span>
           </div>
           {product.additionalInfoSections && (
             <div
