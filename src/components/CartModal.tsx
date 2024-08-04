@@ -62,7 +62,7 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
   };
 
   return (
-    <div ref={modalRef} className="w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20">
+    <div ref={modalRef} className="w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-zinc-900 top-12 right-0 flex flex-col gap-6 z-20">
       {!cart.lineItems ? (
         <div className="">Cart is Empty</div>
       ) : (
@@ -95,7 +95,7 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
                       <h3 className="font-semibold">
                         {item.productName?.original}
                       </h3>
-                      <div className="p-1 bg-gray-50 rounded-sm flex items-center gap-2">
+                      <div className="p-1 bg-zinc-900 rounded-sm flex items-center gap-2">
                         {item.quantity && item.quantity > 1 && (
                           <div className="text-xs text-green-500">
                             {item.quantity} x{" "}
@@ -111,7 +111,7 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
                   </div>
                   {/* BOTTOM */}
                   <div className="flex justify-between text-sm">
-                    <span className="text-gray-500">Qty. {item.quantity}</span>
+                    <span className="text-gray-100">Qty. {item.quantity}</span>
                     <span
                       className="text-blue-500"
                       style={{ cursor: isLoading ? "not-allowed" : "pointer" }}

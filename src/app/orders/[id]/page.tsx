@@ -15,7 +15,7 @@ const OrderPage = async ({ params }: { params: { id: string } }) => {
   }
 
   return (
-    <div className="flex flex-col h-[calc(100vh-180px)] items-center justify-center ">
+    <div className="flex flex-col mt-20 bg-zinc-800 h-[calc(100vh-180px)] items-center justify-center ">
       <div className="shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] px-40 py-20">
       <h1 className="text-xl">Order Details</h1>
       <div className="mt-12 flex flex-col gap-6">

@@ -19,9 +19,9 @@ const Navbar = () => {
       <div className="hidden md:flex items-center justify-between gap-8 h-full">
         {/* LEFT */}
         <div className="w-1/3 xl:w-1/2 flex items-center gap-12">
-          <Link href="/" className="flex items-center gap-3">
-            <Image src="/logo.png" alt="" width={24} height={24} />
-            <div className="text-2xl tracking-wide">Wheelify</div>
+          <Link href="/" className="flex mt-4 mr-44 items-center gap-3">
+            <Image src="/LogoWhiteGLow.png" alt="" width={1600} height={570}  />
+            {/* <div className="text-2xl tracking-wide">Wheelify</div> */}
           </Link>
           <div className="hidden xl:flex gap-4">
             {/* <Link href="/">Homepage</Link>

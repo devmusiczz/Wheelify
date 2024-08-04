@@ -136,47 +136,47 @@ const LoginPage = () => {
         <h1 className="text-2xl font-semibold">{formTitle}</h1>
         {mode === MODE.REGISTER ? (
           <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-700">Username</label>
+            <label className="text-sm text-gray-100">Username</label>
             <input
               type="text"
               name="username"
               placeholder="john"
-              className="ring-2 ring-gray-300 rounded-md p-4"
+              className="ring-2 bg-zinc-900 ring-gray-300 rounded-md p-4"
               onChange={(e) => setUsername(e.target.value)}
             />
           </div>
         ) : null}
         {mode !== MODE.EMAIL_VERIFICATION ? (
           <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-700">E-mail</label>
+            <label className="text-sm text-gray-100">E-mail</label>
             <input
               type="email"
               name="email"
               placeholder="john@gmail.com"
-              className="ring-2 ring-gray-300 rounded-md p-4"
+              className="ring-2 bg-zinc-900 ring-gray-300 rounded-md p-4"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
         ) : (
           <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-700">Verification Code</label>
+            <label className="text-sm bg-zinc-900 text-gray-100">Verification Code</label>
             <input
               type="text"
               name="emailCode"
               placeholder="Code"
-              className="ring-2 ring-gray-300 rounded-md p-4"
+              className="ring-2 bg-zinc-900 ring-gray-300 rounded-md p-4"
               onChange={(e) => setEmailCode(e.target.value)}
             />
           </div>
         )}
         {mode === MODE.LOGIN || mode === MODE.REGISTER ? (
           <div className="flex flex-col gap-2">
-            <label className="text-sm text-gray-700">Password</label>
+            <label className="text-sm bg-zinc-900 text-gray-100">Password</label>
             <input
               type="password"
               name="password"
               placeholder="Enter your password"
-              className="ring-2 ring-gray-300 rounded-md p-4"
+              className="ring-2 bg-zinc-900 ring-gray-300 rounded-md p-4"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
