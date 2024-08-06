@@ -1,7 +1,7 @@
 {
     "redirects": [
       {
-        "source": "http://wheelify.in/(.*)",
+        "source": "/(.*)",
         "destination": "https://wheelify.in/$1",
         "permanent": true
       }
