@@ -7,7 +7,7 @@ import { updateUser } from "@/lib/action";
 import React from 'react';
 
 interface ProfileDetailsProps {
-  user: any; // Replace 'any' with the appropriate type for the 'user' object
+  user: any; 
 }
 
 const ProfileDetails: React.FC<ProfileDetailsProps> = ({ user }) => {

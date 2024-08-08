@@ -81,7 +81,7 @@ const ProductList = async ({
           </div>
           {product.additionalInfoSections && (
             <div
-              className="text-sm text-gray-500"
+              className="text-sm text-gray-200"
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(
                   product.additionalInfoSections.find(

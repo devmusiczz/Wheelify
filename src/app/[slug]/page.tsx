@@ -40,7 +40,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
       <div className="w-full lg:w-1/2 flex  flex-col gap-6">
         <h1 className="text-4xl font-medium">{product.name}</h1>
         <div
-          className="text-sm text-gray-500"
+          className="text-sm text-gray-300"
           dangerouslySetInnerHTML={{ __html: sanitizedDescription }}
         ></div>
 
@@ -49,10 +49,10 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
           <h2 className="font-medium text-2xl">Rs {product.priceData?.price}</h2>
         ) : (
           <div className="flex items-center gap-4">
-            <h3 className="text-xl text-gray-500 line-through">
+            <h3 className="text-xl text-red-500 line-through">
               Rs {product.priceData?.price}
             </h3>
-            <h2 className="font-medium text-2xl">
+            <h2 className="font-medium text-green-400 text-2xl">
               Rs {product.priceData?.discountedPrice}
             </h2>
           </div>
@@ -76,7 +76,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
           <div className="text-sm" key={section.title}>
             <h4 className="font-medium mb-4">{section.title}</h4>
             <div
-              className="text-gray-500"
+              className="text-gray-300"
               dangerouslySetInnerHTML={{ __html: section.description }}
             ></div>
           </div>
