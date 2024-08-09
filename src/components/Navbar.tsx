@@ -11,7 +11,7 @@ const Navbar = () => {
       {/* MOBILE */}
       <div className="h-full flex items-center justify-between md:hidden">
         <Link href="/">
-          <Image src="/logo.png" alt="" width={121.66} height={68.43}  />
+          <Image src="/logo.png" alt="" width={100} height={50}  />
         </Link>
         <SearchBar />
         <NavIcons />

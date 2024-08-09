@@ -37,6 +37,7 @@ const CartPage = () => {
 
   return (
     <div className="flex flex-col container mx-auto p-4">
+      <h1 className="text-2xl mt-24 font-bold mb-4"></h1>
       {!cart.lineItems ? (
         <div>Cart is Empty</div>
       ) : (

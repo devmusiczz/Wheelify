@@ -8,8 +8,8 @@ import { media as wixMedia } from "@wix/sdk";
 const CartInfo = ({ cart, isLoading, removeItem, wixClient }) => {
   return (
     <>
-      <h2 className="mt-20 mb-6 text-xl">Shopping Cart</h2>
-      <div className="flex flex-col gap-8">
+      <h2 className="mb-6 text-xl">Shopping Cart</h2>
+      <div className="flex ml-4 flex-col gap-8">
         {cart.lineItems.map((item) => (
           <div className="flex gap-4" key={item._id}>
             {item.image && (

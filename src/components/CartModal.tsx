@@ -58,13 +58,13 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
   };
 
   return (
-    <div ref={modalRef} className="w-max absolute p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-zinc-900 top-12 right-0 flex flex-col gap-6 z-20">
+    <div ref={modalRef} className="w-screen sm:w-max absolute ml-4 p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-zinc-900 top-12 right-0 flex flex-col gap-6 z-20">
       {!cart.lineItems ? (
-        <div>Cart is Empty</div>
+        <div >Cart is Empty</div>
       ) : (
         <>
           <CartInfo cart={cart} isLoading={isLoading} removeItem={removeItem} wixClient={wixClient} />
-          <div className="flex justify-between text-sm">
+          <div className="flex justify-between ml-4 text-sm">
             <button
               className="rounded-md py-3 px-4 ring-1 ring-gray-300"
               onClick={handleCartButtonClick}
