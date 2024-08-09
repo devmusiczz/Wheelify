@@ -46,7 +46,8 @@ const NavIcons = () => {
 
   useEffect(() => {
     const handleClickOutside = (event: { target: any; }) => {
-      if (profileRef.current && (profileRef.current as HTMLElement).contains(event.target)) {
+      if (profileRef.current && !(profileRef.current as HTMLElement).contains(event.target)) {
+
         setIsProfileOpen(false);
       }
     };
