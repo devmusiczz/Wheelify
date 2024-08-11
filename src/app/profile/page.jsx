@@ -37,7 +37,7 @@ const ProfilePage = async () => {
   }
 
   return (
-    <div className="flex flex-col md:flex-row gap-24 md:h-[calc(100vh-180px)] items-center px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+    <div className="flex flex-col md:flex-row gap-24 mt-24 md:h-[calc(100vh-180px)] items-center px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
       <ProfileDetails user={user} />
       <OrdersList orders={orders} />
     </div>
