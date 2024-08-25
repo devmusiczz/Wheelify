@@ -4,7 +4,7 @@ import { useWixClient } from "@/hooks/useWixClient";
 import { LoginState } from "@wix/sdk";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 enum MODE {
   LOGIN = "LOGIN",
@@ -24,7 +24,6 @@ const LoginPage = () => {
   }
 
   const [mode, setMode] = useState(MODE.LOGIN);
-
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,6 +31,16 @@ const LoginPage = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+
+  // Reset input fields when mode changes
+  useEffect(() => {
+    setUsername("");
+    setEmail("");
+    setPassword("");
+    setEmailCode("");
+    setError("");
+    setMessage("");
+  }, [mode]);
 
   const formTitle =
     mode === MODE.LOGIN
@@ -115,10 +124,10 @@ const LoginPage = () => {
           } else {
             setError("Something went wrong!");
           }
+          break;
         case LoginState.EMAIL_VERIFICATION_REQUIRED:
           setMode(MODE.EMAIL_VERIFICATION);
-        // case LoginState.OWNER_APPROVAL_REQUIRED:
-        //   setMessage("Your account is pending approval");
+          break;
         default:
           break;
       }
@@ -129,12 +138,16 @@ const LoginPage = () => {
       setIsLoading(false);
     }
   };
+  
 
   return (
     <div className="h-[calc(100vh-80px)] px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 flex mt-24 items-center justify-center">
       <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
-        <h1 className="text-2xl font-semibold">{formTitle}</h1>
-        {mode === MODE.REGISTER ? (
+        <h1 className="text-2xl font-semibold">{formTitle}
+        </h1>
+        
+
+        {mode === MODE.REGISTER && (
           <div className="flex flex-col gap-2">
             <label className="text-sm text-gray-100">Username</label>
             <input
@@ -142,10 +155,12 @@ const LoginPage = () => {
               name="username"
               placeholder="john"
               className="ring-2 bg-zinc-900 ring-gray-300 rounded-md p-4"
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
+              disabled={isLoading}
             />
           </div>
-        ) : null}
+        )}
         {mode !== MODE.EMAIL_VERIFICATION ? (
           <div className="flex flex-col gap-2">
             <label className="text-sm text-gray-100">E-mail</label>
@@ -154,7 +169,9 @@ const LoginPage = () => {
               name="email"
               placeholder="john@gmail.com"
               className="ring-2 bg-zinc-900 ring-gray-300 rounded-md p-4"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
+              disabled={isLoading}
             />
           </div>
         ) : (
@@ -165,11 +182,13 @@ const LoginPage = () => {
               name="emailCode"
               placeholder="Code"
               className="ring-2 bg-zinc-900 ring-gray-300 rounded-md p-4"
+              value={emailCode}
               onChange={(e) => setEmailCode(e.target.value)}
+              disabled={isLoading}
             />
           </div>
         )}
-        {mode === MODE.LOGIN || mode === MODE.REGISTER ? (
+        {(mode === MODE.LOGIN || mode === MODE.REGISTER) && (
           <div className="flex flex-col gap-2">
             <label className="text-sm text-gray-100">Password</label>
             <input
@@ -177,14 +196,18 @@ const LoginPage = () => {
               name="password"
               placeholder="Enter your password"
               className="ring-2 bg-zinc-900 ring-gray-300 rounded-md p-4"
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={isLoading}
             />
           </div>
-        ) : null}
+        )}
         {mode === MODE.LOGIN && (
           <div
-            className="text-sm underline cursor-pointer"
-            onClick={() => setMode(MODE.RESET_PASSWORD)}
+            className={`text-sm underline cursor-pointer ${
+              isLoading ? "text-gray-400 cursor-not-allowed" : ""
+            }`}
+            onClick={() => !isLoading && setMode(MODE.RESET_PASSWORD)}
           >
             Forgot Password?
           </div>
@@ -198,24 +221,30 @@ const LoginPage = () => {
         {error && <div className="text-red-600">{error}</div>}
         {mode === MODE.LOGIN && (
           <div
-            className="text-sm underline cursor-pointer"
-            onClick={() => setMode(MODE.REGISTER)}
+            className={`text-sm underline cursor-pointer ${
+              isLoading ? "text-gray-400 cursor-not-allowed" : ""
+            }`}
+            onClick={() => !isLoading && setMode(MODE.REGISTER)}
           >
             {"Don't"} have an account?
           </div>
         )}
         {mode === MODE.REGISTER && (
           <div
-            className="text-sm underline cursor-pointer"
-            onClick={() => setMode(MODE.LOGIN)}
+            className={`text-sm underline cursor-pointer ${
+              isLoading ? "text-gray-400 cursor-not-allowed" : ""
+            }`}
+            onClick={() => !isLoading && setMode(MODE.LOGIN)}
           >
-            Have and account?
+            Have an account?
           </div>
         )}
         {mode === MODE.RESET_PASSWORD && (
           <div
-            className="text-sm underline cursor-pointer"
-            onClick={() => setMode(MODE.LOGIN)}
+            className={`text-sm underline cursor-pointer ${
+              isLoading ? "text-gray-400 cursor-not-allowed" : ""
+            }`}
+            onClick={() => !isLoading && setMode(MODE.LOGIN)}
           >
             Go back to Login
           </div>

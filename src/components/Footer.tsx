@@ -52,7 +52,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row gap-8">
           <div className="flex items-center">
             <span className="text-gray-500 mr-4">Language:</span>
-            <span className="font-medium">Indian | English</span>
+            <span className="font-medium">English</span>
           </div>
           <div className="flex items-center">
             <span className="text-gray-500 mr-4">Currency:</span>

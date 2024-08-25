@@ -1,12 +1,12 @@
-'use client'
+'use client';
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 
 const slides = [
   {
     id: 1,
-    title: "All Automobile Accessories ",
+    title: "All Automobile Accessories",
     description: "Find trending automobile accessories! Up to 50% off on all accessories!",
     img: "/Auto4.jpg",
     url: "/list?cat=all-products",
@@ -32,17 +32,32 @@ const slides = [
 
 const Slider = () => {
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+    const slideInterval = setInterval(() => {
+      if (!isPaused) {
+        setCurrent((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
+      }
     }, 5000);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearInterval(slideInterval);
+  }, [isPaused]);
+
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+  const handleIndicatorClick = (index: SetStateAction<number>) => {
+    setCurrent(index);
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 5000);
+  };
 
   return (
-    <div className="h-[calc(100vh-80px)] mt-20 overflow-hidden relative">
+    <div
+      className="h-[calc(100vh-80px)] mt-20 overflow-hidden relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
       <div
         className="w-max h-full flex transition-all ease-in-out duration-1000"
         style={{ transform: `translateX(-${current * 100}vw)` }}
@@ -82,7 +97,7 @@ const Slider = () => {
               current === index ? "scale-150" : ""
             }`}
             key={slide.id}
-            onClick={() => setCurrent(index)}
+            onClick={() => handleIndicatorClick(index)}
           >
             {current === index && (
               <div className="w-[6px] h-[6px] bg-gray-600 rounded-full"></div>
