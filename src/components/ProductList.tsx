@@ -85,7 +85,7 @@ const ProductList = async ({
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(
                   product.additionalInfoSections.find(
-                    (section: any) => section.title === "shortDesc"
+                    (section: any) => section.title === "Short Description"
                   )?.description || ""
                 ),
               }}
