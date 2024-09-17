@@ -18,6 +18,28 @@ const CustomizeProducts = ({
   }>({});
   const [selectedVariant, setSelectedVariant] = useState<products.Variant>();
 
+  // Select the last variant by default when the component mounts
+  useEffect(() => {
+    if (variants.length > 0) {
+      // Get the last variant
+      const defaultVariant = variants[variants.length - 1];
+      setSelectedVariant(defaultVariant);
+
+      // Set selectedOptions based on the last variant's choices
+      if (defaultVariant.choices) {
+        const initialOptions = Object.entries(defaultVariant.choices).reduce(
+          (acc: { [key: string]: string }, [key, value]) => {
+            acc[key] = value;
+            return acc;
+          },
+          {}
+        );
+        setSelectedOptions(initialOptions);
+      }
+    }
+  }, [variants]);
+
+  // Update selected variant when options change
   useEffect(() => {
     const variant = variants.find((v) => {
       const variantChoices = v.choices;
@@ -50,11 +72,11 @@ const CustomizeProducts = ({
   };
 
   return (
-    <div className="flex  flex-col gap-6">
+    <div className="flex flex-col gap-6">
       {productOptions.map((option) => (
         <div className="flex flex-col gap-4" key={option.name}>
-          <h4 className=" font-medium">Choose a {option.name}</h4>
-          <ul className="flex  items-center gap-3">
+          <h4 className="font-medium">Choose a {option.name}</h4>
+          <ul className="flex items-center gap-3">
             {option.choices?.map((choice) => {
               const disabled = !isVariantInStock({
                 ...selectedOptions,
@@ -79,7 +101,7 @@ const CustomizeProducts = ({
                   key={choice.description}
                 >
                   {selected && (
-                    <div className="absolute w-10 h-10  rounded-full ring-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                    <div className="absolute w-10 h-10 rounded-full ring-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                   )}
                   {disabled && (
                     <div className="absolute w-10 h-[2px] bg-red-400 rotate-45 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
@@ -97,7 +119,6 @@ const CustomizeProducts = ({
                       : "white",
                     color: selected || disabled ? "white" : "#f35c7a",
                     boxShadow: disabled ? "none" : "",
-                    
                   }}
                   key={choice.description}
                   onClick={clickHandler}
