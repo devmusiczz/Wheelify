@@ -51,50 +51,52 @@ const ProductList = async ({
 
   return (
     <div className="mt-12 flex gap-x-8 gap-y-16 justify-between flex-wrap">
-      {res.items.map((product: products.Product) => (
-        <Link
-          href={"/" + product.slug}
-          className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
-          key={product._id}
-        >
-          <div className="relative w-full h-80">
+    {res.items.map((product: products.Product) => (
+      <Link
+        href={"/" + product.slug}
+        className="w-full flex flex-col gap-4 sm:w-[45%] lg:w-[22%]"
+        key={product._id}
+      >
+        {/* Image Section */}
+        <div className="relative w-full h-80">
+          <Image
+            src={product.media?.mainMedia?.image?.url || "/product.png"}
+            alt={product.name || "Product image"}
+            fill
+            sizes="25vw"
+            className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity ease-in-out duration-500"
+          />
+          {product.media?.items && (
             <Image
-              src={product.media?.mainMedia?.image?.url || "/product.png"}
-              alt=""
+              src={product.media?.items[1]?.image?.url || "/product.png"}
+              alt="Additional product image"
               fill
               sizes="25vw"
-              className="absolute object-cover rounded-md z-10 hover:opacity-0 transition-opacity easy duration-500"
+              className="absolute object-cover rounded-md"
             />
-            {product.media?.items && (
-              <Image
-                src={product.media?.items[1]?.image?.url || "/product.png"}
-                alt=""
-                fill
-                sizes="25vw"
-                className="absolute object-cover rounded-md"
-              />
+          )}
+        </div>
+  
+        {/* Product Title */}
+        <div className="text-white">
+          <span className="font-medium line-clamp-2">{product.name}</span>
+        </div>
+  
+        {/* Price Section */}
+        <div className="flex justify-between items-center">
+          <div className="">
+            <span className="font-semibold text-lg">Rs {product.priceData?.discountedPrice}</span>
+            {product.priceData?.discountedPrice && (
+              <span className="text-sm ml-2 text-gray-400 line-through">Rs {product.priceData?.price}</span>
             )}
           </div>
-          <div className="flex text-white justify-between">
-            <span className="font-medium">{product.name}</span>
-            <span className="font-semibold">Rs {product.priceData?.discountedPrice}</span>
-          </div>
-          {product.additionalInfoSections && (
-            <div
-              className="text-sm text-gray-200"
-              dangerouslySetInnerHTML={{
-                __html: DOMPurify.sanitize(
-                  product.additionalInfoSections.find(
-                    (section: any) => section.title === "Short Description"
-                  )?.description || ""
-                ),
-              }}
-            ></div>
-          )}
-          <button className="rounded-2xl ring-1 ring-gray-800 bg-lama text-white w-42 py-2 px-4 text-xs transition duration-200 ease-in-out hover:bg-[#b83a2b] hover:ring-[#b83a2b]">
-            Add to Cart
-          </button>
-        </Link>
+        </div>
+  
+        {/* Add to Cart Button */}
+        <button className="mt-2 rounded-2xl ring-1 ring-gray-800 bg-lama text-white w-full py-2 text-xs transition duration-200 ease-in-out hover:bg-[#b83a2b] hover:ring-[#b83a2b]">
+          Add to Cart
+        </button>
+      </Link>
       ))}
       {searchParams?.cat || searchParams?.name ? (
         <Pagination
@@ -108,3 +110,19 @@ const ProductList = async ({
 };
 
 export default ProductList;
+
+
+
+// additional info section on card like short descp
+{/* {product.additionalInfoSections && (
+            <div
+              className="text-sm text-gray-200"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(
+                  product.additionalInfoSections.find(
+                    (section: any) => section.title === "Short Description"
+                  )?.description || ""
+                ),
+              }}
+            ></div>
+          )} */}
