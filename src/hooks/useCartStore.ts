@@ -6,6 +6,7 @@ type CartState = {
   cart: currentCart.Cart;
   isLoading: boolean;
   counter: number;
+  cartOpen: boolean; // Add a state for cart visibility
   getCart: (wixClient: WixClient) => void;
   addItem: (
     wixClient: WixClient,
@@ -14,12 +15,17 @@ type CartState = {
     quantity: number
   ) => void;
   removeItem: (wixClient: WixClient, itemId: string) => void;
+  openCart: () => void; // Function to open the cart
+  closeCart: () => void; // Function to close the cart
 };
 
 export const useCartStore = create<CartState>((set) => ({
   cart: [],
   isLoading: true,
   counter: 0,
+  cartOpen: false, // Initial cart visibility state is closed
+
+  // Fetch current cart data
   getCart: async (wixClient) => {
     try {
       const cart = await wixClient.currentCart.getCurrentCart();
@@ -32,8 +38,11 @@ export const useCartStore = create<CartState>((set) => ({
       set((prev) => ({ ...prev, isLoading: false }));
     }
   },
+
+  // Add item to the cart and open cart automatically
   addItem: async (wixClient, productId, variantId, quantity) => {
     set((state) => ({ ...state, isLoading: true }));
+
     const response = await wixClient.currentCart.addToCurrentCart({
       lineItems: [
         {
@@ -51,10 +60,14 @@ export const useCartStore = create<CartState>((set) => ({
       cart: response.cart,
       counter: response.cart?.lineItems.length,
       isLoading: false,
+      cartOpen: true, // Automatically open the cart after adding an item
     });
   },
+
+  // Remove item from the cart
   removeItem: async (wixClient, itemId) => {
     set((state) => ({ ...state, isLoading: true }));
+
     const response = await wixClient.currentCart.removeLineItemsFromCurrentCart(
       [itemId]
     );
@@ -65,4 +78,10 @@ export const useCartStore = create<CartState>((set) => ({
       isLoading: false,
     });
   },
+
+  // Manually open the cart
+  openCart: () => set({ cartOpen: true }),
+
+  // Manually close the cart
+  closeCart: () => set({ cartOpen: false }),
 }));

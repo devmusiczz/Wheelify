@@ -94,7 +94,7 @@ const ProductList = async ({
   
         {/* Add to Cart Button */}
         <button className="mt-2 rounded-2xl ring-1 ring-gray-800 bg-lama text-white w-full py-2 text-xs transition duration-200 ease-in-out hover:bg-[#b83a2b] hover:ring-[#b83a2b]">
-          Add to Cart
+          View Product
         </button>
       </Link>
       ))}

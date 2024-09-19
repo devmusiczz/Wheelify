@@ -1,26 +1,25 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { useCartStore } from "@/hooks/useCartStore";
+import { useCartStore } from "@/hooks/useCartStore"; // Import the cart store
 import { useWixClient } from "@/hooks/useWixClient";
 import { currentCart } from "@wix/ecom";
 import { useRouter } from "next/navigation";
 import CartInfo from "@/components/CartInfo";
 
-const CartModal = ({ closeModal }: { closeModal: () => void }) => {
+const CartModal = () => {
   const wixClient = useWixClient();
-  const { cart, isLoading, removeItem }: { cart: any; isLoading: boolean; removeItem: (client: any, itemId: string) => void } = useCartStore();
+  const { cart, isLoading, removeItem, cartOpen, openCart, closeCart } = useCartStore(); // Added openCart function
   const modalRef = useRef<HTMLDivElement | null>(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Track user login state
   const [showLoginPopup, setShowLoginPopup] = useState(false); // Toggle login modal visibility
-  const [showCartModal, setShowCartModal] = useState(true); // Control Cart modal visibility
   const router = useRouter();
 
   // Check authentication status on component mount
   useEffect(() => {
     const checkAuthStatus = async () => {
       try {
-        const isLoggedIn = wixClient.auth.loggedIn(); // Check if the user is logged in
+        const isLoggedIn = await wixClient.auth.loggedIn(); // Ensure proper login check
         setIsAuthenticated(isLoggedIn);
       } catch (err) {
         console.log("Error checking authentication status", err);
@@ -30,10 +29,11 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
     checkAuthStatus();
   }, [wixClient]);
 
+  // Close the modal if clicked outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-        closeModal();
+        closeCart(); // Close the cart modal using the global state
       }
     };
 
@@ -42,12 +42,18 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
-  }, [modalRef, closeModal]);
+  }, [modalRef, closeCart]);
+
+  // Listen for changes in the cart (e.g., after adding an item) and automatically open the cart
+  useEffect(() => {
+    if (cart.lineItems && cart.lineItems.length > 0) {
+      openCart(); // Open the cart modal after adding an item
+    }
+  }, [cart.lineItems, openCart]);
 
   // Handle the checkout process
   const handleCheckout = async () => {
     if (!isAuthenticated) {
-      setShowCartModal(false); // Hide the Cart modal
       setShowLoginPopup(true);  // Show login popup
       return;
     }
@@ -75,15 +81,16 @@ const CartModal = ({ closeModal }: { closeModal: () => void }) => {
 
   // Handle redirect to cart page
   const handleCartButtonClick = () => {
-    setShowCartModal(false); // Hide the Cart modal
+    closeCart(); // Close modal using global state function
     router.push("/cart");    // Redirect to the cart page
   };
 
+  // Only render the modal if `cartOpen` is true
   return (
     <>
-      {showCartModal && (
+      {cartOpen && (
         <div ref={modalRef} className="w-screen sm:w-max absolute ml-4 p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-zinc-900 top-12 right-0 flex flex-col gap-6 z-20">
-          {!cart.lineItems ? (
+          {!cart.lineItems || cart.lineItems.length === 0 ? ( // Ensure cart is not empty
             <div>Cart is Empty</div>
           ) : (
             <>

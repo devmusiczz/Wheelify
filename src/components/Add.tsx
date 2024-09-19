@@ -15,9 +15,6 @@ const Add = ({
 }) => {
   const [quantity, setQuantity] = useState(1);
 
-  // // TEMPORARY
-  // const stock = 4;
-
   const handleQuantity = (type: "i" | "d") => {
     if (type === "d" && quantity > 1) {
       setQuantity((prev) => prev - 1);
@@ -28,8 +25,12 @@ const Add = ({
   };
 
   const wixClient = useWixClient();
+  const { addItem, isLoading } = useCartStore(); // Add `openCart` state directly handled inside addItem now
 
-  const { addItem, isLoading } = useCartStore();
+  const handleAddToCart = async () => {
+    await addItem(wixClient, productId, variantId, quantity);
+    // No need to manually call `openCart` if it is handled inside the store
+  };
 
   return (
     <div className="flex flex-col gap-4">
@@ -40,7 +41,7 @@ const Add = ({
             <button
               className="cursor-pointer text-xl disabled:cursor-not-allowed disabled:opacity-20"
               onClick={() => handleQuantity("d")}
-              disabled={quantity===1}
+              disabled={quantity === 1}
             >
               -
             </button>
@@ -48,7 +49,7 @@ const Add = ({
             <button
               className="cursor-pointer text-xl disabled:cursor-not-allowed disabled:opacity-20"
               onClick={() => handleQuantity("i")}
-              disabled={quantity===stockNumber}
+              disabled={quantity === stockNumber}
             >
               +
             </button>
@@ -57,14 +58,13 @@ const Add = ({
             <div className="text-xs">Product is out of stock</div>
           ) : (
             <div className="text-xs">
-              Only <span className="text-orange-500">{stockNumber} items</span>{" "}
-              left!
+              Only <span className="text-orange-500">{stockNumber} items</span> left!
               <br /> {"Don't"} miss it
             </div>
           )}
         </div>
         <button
-          onClick={() => addItem(wixClient, productId, variantId, quantity)}
+          onClick={handleAddToCart}
           disabled={isLoading}
           className="w-36 text-sm rounded-3xl ring-1 ring-lama py-2 px-4 bg-lama text-white transition duration-200 ease-in-out hover:bg-[#b83a2b] hover:ring-[#b83a2b] disabled:cursor-not-allowed disabled:bg-pink-200 disabled:ring-0 disabled:text-white"
         >
