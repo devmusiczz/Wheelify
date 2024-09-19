@@ -33,14 +33,26 @@ const CartModal = () => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (modalRef.current && !modalRef.current.contains(event.target as Node)) {
-        closeCart(); // Close the cart modal using the global state
+        closeCart(); // Close the cart modal if clicked outside
       }
     };
-
+  
+    // Stop propagation for any clicks within the modal
+    const handleClickInside = (event: MouseEvent) => {
+      event.stopPropagation();
+    };
+  
     document.addEventListener("mousedown", handleClickOutside);
-
+    if (modalRef.current) {
+      modalRef.current.addEventListener("mousedown", handleClickInside);
+    }
+  
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      if (modalRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        modalRef.current.removeEventListener("mousedown", handleClickInside);
+      }
     };
   }, [modalRef, closeCart]);
 
