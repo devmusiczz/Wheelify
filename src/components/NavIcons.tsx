@@ -11,7 +11,6 @@ import { useCartStore } from "@/hooks/useCartStore";
 
 const NavIcons = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const profileRef = useRef(null);
@@ -38,7 +37,7 @@ const NavIcons = () => {
     router.push(logoutUrl);
   };
 
-  const { cart, counter, getCart } = useCartStore();
+  const { cart, counter, getCart, cartOpen, openCart, closeCart } = useCartStore(); // Added cartOpen, openCart, and closeCart from the store
 
   useEffect(() => {
     getCart(wixClient);
@@ -47,7 +46,6 @@ const NavIcons = () => {
   useEffect(() => {
     const handleClickOutside = (event: { target: any; }) => {
       if (profileRef.current && !(profileRef.current as HTMLElement).contains(event.target)) {
-
         setIsProfileOpen(false);
       }
     };
@@ -58,6 +56,14 @@ const NavIcons = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  const handleCartClick = () => {
+    if (cartOpen) {
+      closeCart(); // Close the cart modal
+    } else {
+      openCart(); // Open the cart modal
+    }
+  };
 
   return (
     <div className="flex items-center gap-4 xl:gap-6 relative">
@@ -82,14 +88,14 @@ const NavIcons = () => {
       )}
       <div
         className="relative cursor-pointer"
-        onClick={() => setIsCartOpen((prev) => !prev)}
+        onClick={handleCartClick} // Toggle cart modal using global state
       >
         <Image src="/cart.png" alt="" width={22} height={22} />
         <div className="absolute -top-4 -right-4 w-6 h-6 bg-lama rounded-full text-white text-sm flex items-center justify-center">
           {counter}
         </div>
       </div>
-      {isCartOpen && <CartModal closeModal={() => setIsCartOpen(false)} />}
+      {cartOpen && <CartModal />} {/* Render the CartModal based on global state */}
     </div>
   );
 };
